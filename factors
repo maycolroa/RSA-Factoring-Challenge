@@ -1,0 +1,25 @@
+#!/usr/bin/python3
+from sys import argv
+from math import sqrt
+
+
+def factor():
+    with open(argv[1]) as k:
+        for line_new in k:
+            N_B = int(line_new)
+            print("{:d}=".format(N_B), end="")
+            if N_B % 2 == 0:
+                print("{}*2".format(N_B//2))
+                continue
+            sqn = int(sqrt(N_B))
+            if sqn % 2 == 0:
+                sqn += 1
+            for j in range(3, sqn + 1, 2):
+                if N_B % j == 0:
+                    print("{}*{}".format(j, N_B//j))
+                    break
+            if N_B % j != 0:
+                print("{}={}*1".format(N_B, N_B))
+
+
+factor()
